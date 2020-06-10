@@ -61,7 +61,7 @@ else:
     columnaSeleccionadaInicial = int(sys.argv[4])
     columnaSeleccionada = int(sys.argv[5])
     valoresPredecir = sys.argv[6]
-    nombreFichero = sys.argv[7]
+    rutaEscribirJson = sys.argv[7]
 
 array = df.values
 X = (array[:,columnaSeleccionadaInicial:columnaSeleccionada])
@@ -86,7 +86,11 @@ valoresPredecir = np.array([valorMap])
 # valorPredecir = np.array([[1,1,2010,1.00,12.00,5.00,31.00,56.00,0.4,2.00,3.00,2.00]])
 reg = model.fit(X, Y)
 result = reg.predict(valoresPredecir)
-print("Result: \n")
-print(result)
 
-json = '{"Resultado":'+ result +'}'
+if(pedirParametros == 1):
+    print("Result: \n")
+    print(result)
+else:
+    json = '{"Resultado":'+ str(result[0]) +'}'
+    file = open(rutaEscribirJson + fichero[0] + ".json", "w")
+    file.write(json)
