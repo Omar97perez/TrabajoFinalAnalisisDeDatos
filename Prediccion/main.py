@@ -70,15 +70,14 @@ Y = (array[:,columnaSeleccionada])
 if algoritmoSeleccionado == 1:
     model = LinearRegression()
 elif algoritmoSeleccionado == 2:
-    model = LinearRegression()
+    model = DecisionTreeRegressor()
 elif algoritmoSeleccionado == 3:
-    model = LinearRegression()
+    model = RandomForestRegressor()
 elif algoritmoSeleccionado == 4:
-    model = LinearRegression()
+    model = MLPRegressor()
 else:
     print("El algoritmo introducido no existe")
-    exit 1
-
+    sys.exit()
 
 valorSplit = valoresPredecir.split(",")
 valorMap = list(map(float, valorSplit))
@@ -89,3 +88,5 @@ reg = model.fit(X, Y)
 result = reg.predict(valoresPredecir)
 print("Result: \n")
 print(result)
+
+json = '{"Resultado":'+ result +'}'
