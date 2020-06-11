@@ -57,5 +57,5 @@ for row in array:
         final += fila + "\n"
         fila = ""
 
-file = open( "./" + "final" + ".csv", "w")
+file = open( "./DatosTratados/" + "Resultados" + ".csv", "w")
 file.write(final)
