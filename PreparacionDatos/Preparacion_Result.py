@@ -8,6 +8,13 @@ import geopandas as gpd
 import numpy as np
 from time import time
 
+def GetResult(value):
+    if value == 'G':
+        return "0"
+    elif value == 'E':
+        return "1"
+    elif value == 'P':
+        return "2"
 
 #Cargamos los datos de un fichero
 file = sys.argv[1]
@@ -38,10 +45,10 @@ for row in array:
         fila += row[3] + "," + row[1]
         for all in array:
             if all[3] == row[3] and all[1] == row[1] and match <= 30: 
-                fila += "," + all[7]
+                fila += "," + GetResult(all[7])
                 match += 1
             elif all[4] == row[3] and all[1] == row[1] and match <= 30:
-                fila += "," + all[8]
+                fila += "," + GetResult(all[8])
                 match += 1
         final += fila + "\n"
         fila = ""
@@ -49,10 +56,10 @@ for row in array:
         fila += row[4] + "," + row[1]
         for all in array:
             if all[3] == row[4] and all[1] == row[1] and match <= 30:
-                fila += "," + all[7]
+                fila += "," + GetResult(all[7])
                 match += 1
             elif all[4] == row[4] and all[1] == row[1] and match <= 30 :
-                fila += "," + all[8]
+                fila += "," + GetResult(all[8])
                 match += 1
         final += fila + "\n"
         fila = ""

@@ -56,7 +56,7 @@ for result in resultados:
     for clasific in clasificacion:
         if result[0] == clasific[1] and result[1] == clasific[7]:
             for rlt in result:
-                fila += rlt + ","
+                fila += str(rlt) + ","
             final += fila +  str(clasific[0]) + "\n"
             fila = ""
 
